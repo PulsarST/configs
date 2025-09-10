@@ -44,7 +44,7 @@ vim.lsp.config("lua_ls", {
 })
 
 -- Configure Pyright (optional)
-vim.lsp.config("pyright", {
+vim.lsp.config("<pyright", {
   capabilities = capabilities,
 })
 
@@ -54,6 +54,11 @@ local function on_attach(_, bufnr)
 
   vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
   vim.keymap.set("n", "gb", "<C-o>", opts)
+  -- Show hover documentationSupportivim
+  vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = bufnr, desc = "LSP Hover Docs" })
+  vim.keymap.set(
+      "i", "<C-k>", vim.lsp.buf.signature_help, { buffer = bufnr, desc = "LSP Signature Help" })
+
 end
 
 -- Hook into *all* LSPs automatically
