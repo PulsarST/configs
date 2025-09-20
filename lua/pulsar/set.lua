@@ -28,3 +28,5 @@ vim.o.winborder = "rounded"
 
 vim.o.background = "dark"
 vim.cmd([[colorscheme gruvbox]])
+
+vim.o.clipboard = "unnamedplus"
