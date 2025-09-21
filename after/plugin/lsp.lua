@@ -61,6 +61,20 @@ local function on_attach(_, bufnr)
 
 end
 
+vim.lsp.config("asm_lsp", {
+  cmd = { "asm-lsp" },
+  filetypes = { "asm", "s", "S" },
+  single_file_support = true,
+  capabilities = capabilities,
+  on_attach = on_attach,
+  settings = {
+    ["asm-lsp"] = {
+      assembler = "nasm",       -- or "gnu" if you prefer GAS syntax
+      instruction_set = "mips", -- enable MIPS instruction set
+    },
+  },
+})
+
 -- Hook into *all* LSPs automatically
 vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
